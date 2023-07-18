@@ -1,11 +1,14 @@
 
 
+using System.ComponentModel.DataAnnotations;
+
 namespace eSocial.Domain.Models
 {
     public class Post
     {
-        public int Id { get; set; }
-        public string? Content { get; set; }
+
+        [Key] public int Id { get; set; }
+        [MaxLength(300)] public string? Content { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime LastUpdate { get; set; }
     }
