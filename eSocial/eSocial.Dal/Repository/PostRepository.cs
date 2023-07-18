@@ -45,12 +45,12 @@ namespace eSocial.Dal.Repository
             return post;
         }
 
-        public async Task Delete(int postId)
+        public async Task Delete(Post post)
         {
-            var post = await db.Posts.FirstOrDefaultAsync(p => p.Id == postId);
-            if (post == null) return;
             db.Posts.Remove(post);
             await db.SaveChangesAsync();
         }
+
+
     }
 }

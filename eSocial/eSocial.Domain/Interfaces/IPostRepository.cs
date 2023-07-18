@@ -9,7 +9,7 @@ namespace eSocial.Domain.Interfaces
         Task<Post> GetById(int id);
         Task<Post> Create(Post post);
         Task<Post> Update(string updateContent, int postId);
-        Task Delete(int postId);
+        Task Delete(Post post);
 
     }
 }
