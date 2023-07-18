@@ -1,8 +1,10 @@
 
 
+using eSocial.Application.Posts.Commands;
 using eSocial.Dal;
 using eSocial.Dal.Repository;
 using eSocial.Domain.Interfaces;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +22,7 @@ namespace eSocial.IoC
             });
 
             services.AddScoped<IPostRepository, PostRepository>();
+            services.AddMediatR(typeof(CreatePostCommand));
 
             return services;
         }
