@@ -5,8 +5,8 @@ using MediatR;
 
 namespace eSocial.Application.Posts.Commands
 {
-    public class CreatePostCommand : IRequest<Post>
+    public class CreatePostCommand : PostCommand
     {
-        public string? PostContent { get; set; }
+
     }
 }

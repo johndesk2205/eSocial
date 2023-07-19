@@ -1,7 +1,49 @@
 ﻿@page "/"
+@inject PostClient http
+@attribute [StreamRendering(true)]
 
-<PageTitle>Index</PageTitle>
+<PageTitle>eSocial</PageTitle>
 
-<h1>Hello, world!</h1>
+<h3>List Posts</h3>
 
-Welcome to your new app.
+
+@if (posts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Context</th>
+                <th>CreatedAd</th>
+                <th>LastUpdate</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var post in posts)
+            {
+                <tr>
+                    <td>@post.Id</td>
+                    <td>@post.Content</td>
+                    <td>@post.CreatedAt.ToShortDateString()</td>
+                    <td>@post.LastUpdate.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+
+
+
+
+@code {
+    private IEnumerable<Models.Post>? posts;
+    protected override async Task OnInitializedAsync()
+    {
+        posts = await http.GetAllPosts();
+    }
+}

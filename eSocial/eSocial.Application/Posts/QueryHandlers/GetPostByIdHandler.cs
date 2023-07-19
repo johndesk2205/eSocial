@@ -9,9 +9,15 @@ namespace eSocial.Application.Posts.QueryHandlers
     public class GetPostByIdHandler : IRequestHandler<GetPostByIdQuery, Post>
     {
         private readonly IPostRepository postRepo;
+
+        public GetPostByIdHandler(IPostRepository postRepo)
+        {
+            this.postRepo = postRepo;
+        }
+
         public async Task<Post> Handle(GetPostByIdQuery request, CancellationToken cancellationToken)
         {
-            return await postRepo.GetById(request.PostId);
+            return await postRepo.GetById(request.Id);
         }
     }
 }

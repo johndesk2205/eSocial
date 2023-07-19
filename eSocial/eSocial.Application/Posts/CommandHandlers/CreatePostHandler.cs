@@ -18,7 +18,7 @@ namespace eSocial.Application.Posts.CommandHandlers
         {
             var newPost = new Post
             {
-                Content = request.PostContent
+                Content = request.Content
             };
             return await postRepo.Create(newPost);
         }

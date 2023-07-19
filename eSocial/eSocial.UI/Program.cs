@@ -1,9 +1,14 @@
-using eSocial.UI;
 
+using eSocial.UI;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorComponents();
+builder.Services.AddRazorComponents().AddServerComponents();
+
+var baseUrl = "http://localhost:5005";
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(baseUrl) });
+builder.Services.AddScoped<PostClient>();
+
 
 var app = builder.Build();
 
