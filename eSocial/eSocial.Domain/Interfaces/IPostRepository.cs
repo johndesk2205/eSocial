@@ -8,7 +8,7 @@ namespace eSocial.Domain.Interfaces
         Task<ICollection<Post>> GetAllPost();
         Task<Post> GetById(int id);
         Task<Post> Create(Post post);
-        Task<Post> Update(string updateContent, int postId);
+        Task<Post> Update(Post updateContent, int postId);
         Task Delete(Post post);
 
     }

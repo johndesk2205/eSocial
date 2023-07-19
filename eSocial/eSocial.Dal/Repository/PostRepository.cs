@@ -36,11 +36,11 @@ namespace eSocial.Dal.Repository
             return post;
         }
 
-        public async Task<Post> Update(string updateContent, int postId)
+        public async Task<Post> Update(Post updateContent, int postId)
         {
             var post = await db.Posts.FirstOrDefaultAsync(p => p.Id == postId);
             post.LastUpdate = DateTime.Now;
-            post.Content = updateContent;
+            post.Content = updateContent.Content;
             await db.SaveChangesAsync();
             return post;
         }

@@ -8,7 +8,7 @@ namespace eSocial.Application.Posts.Commands
     public class UpdatePostCommand : IRequest<Post>
     {
         public int PostId { get; set; }
-        public string? postContent { get; set; }
+        public Post? postContent { get; set; }
 
     }
 }
